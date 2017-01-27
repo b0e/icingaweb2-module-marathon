@@ -1,0 +1,5 @@
+Name: Marathon
+Version: 0.0.1
+Depends: monitoring
+Description: Marathon module for Icinga Web 2
+ This module provides an Marathon import source for Icinga Director
