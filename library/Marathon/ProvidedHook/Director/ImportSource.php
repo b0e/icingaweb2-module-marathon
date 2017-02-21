@@ -25,7 +25,7 @@ class ImportSource extends ImportSourceHook
     case 'marathon_apps':
       return $client->getApps($this->getSetting('marathon_filter'));
     case 'marathon_groups':
-      return $client->getGroups();
+      return $client->getGroups($this->getSetting('marathon_filter'));
     }
   }
 
@@ -50,14 +50,17 @@ class ImportSource extends ImportSourceHook
       return array(
         'id',
         'http',
+        'http_primary',
         'https',
+        'https_primary',
         'group',
         'labels',
+        'env'
       );
     case 'marathon_groups':
       return array(
         'id',
-        'name',
+        'path'
       );
     }
   }
