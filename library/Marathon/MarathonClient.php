@@ -2,7 +2,7 @@
 
 namespace Icinga\Module\Marathon;
 
-use Marathon\Common\Marathon;
+#use Marathon\Common\Marathon;
 use Icinga\Application\Config;
 
 class MarathonClient
@@ -89,6 +89,12 @@ class MarathonClient
     $objects = array();
 
     foreach ($json->apps as $entry) {
+
+      # we don't need suspended apps
+      if ($entry->instances == 0) {
+        continue;
+      }
+
       $app = (object) array();
       $app->id = $entry->id;
 
